@@ -1,0 +1,43 @@
+void main() {
+  Guerreiro guerreiro = Guerreiro(nome: 'guerreiro');
+  guerreiro.atacar();
+  guerreiro.correr();
+  
+  Mago mago = Mago(nome: 'mago');
+  mago.atacar();
+  mago.lancarMagia('Explosão Narval');
+}
+
+abstract class Personagem {
+  String nome;
+  
+  Personagem({required this.nome});
+  
+  void atacar();
+} 
+
+mixin PodeCorrer {
+  void correr() => print('Correndo rapidamente!');
+}
+
+mixin PodeLancarMagia {
+  void lancarMagia(String magia) => print('Lançando a magia: $magia!');
+}
+
+class Guerreiro extends Personagem with PodeCorrer {
+  
+  Guerreiro({required nome}) : super(nome:nome);
+  
+  void atacar() {
+    print('Atacando com a espada!');
+  }
+}
+
+class Mago extends Personagem with PodeLancarMagia {
+  
+  Mago({required nome}) : super(nome:nome);
+  
+  void atacar() {
+    print('Atacando com o cajado!');
+  }
+}
